@@ -4,7 +4,7 @@
   "description": "Switch quickly between files inside angular projects. vscode extension",
   "publisher": "luisreinosodev",
   "icon": "logo.png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LuisReinoso/vscode-ng-file-switcher.git"
@@ -51,7 +51,7 @@
         "mac": "cmd+b"
       },
       {
-        "command": "ng-file-switcher.openSCSS",
+        "command": "ng-file-switcher.openStyle",
         "key": "alt+c",
         "mac": "cmd+c"
       },
