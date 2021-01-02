@@ -1,0 +1,107 @@
+{
+  "name": "vscode-ng-file-switcher",
+  "displayName": "Angular File Switcher",
+  "description": "Switch quickly between files inside angular projects. vscode extension",
+  "publisher": "luisreinosodev",
+  "icon": "logo.png",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisReinoso/vscode-ng-file-switcher.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Keymaps",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/angular.json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ng-file-switcher.openHTML",
+        "title": "Open HTML file"
+      },
+      {
+        "command": "ng-file-switcher.openStyle",
+        "title": "Open Style file"
+      },
+      {
+        "command": "ng-file-switcher.openTest",
+        "title": "Open Test file"
+      },
+      {
+        "command": "ng-file-switcher.openStorybook",
+        "title": "Open Storybook file"
+      },
+      {
+        "command": "ng-file-switcher.openTypescript",
+        "title": "Open Typescript file"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ng-file-switcher.openHTML",
+        "key": "alt+b",
+        "mac": "cmd+b"
+      },
+      {
+        "command": "ng-file-switcher.openSCSS",
+        "key": "alt+c",
+        "mac": "cmd+c"
+      },
+      {
+        "command": "ng-file-switcher.openTest",
+        "key": "alt+d",
+        "mac": "cmd+d"
+      },
+      {
+        "command": "ng-file-switcher.openStorybook",
+        "key": "alt+s",
+        "mac": "cmd+s"
+      },
+      {
+        "command": "ng-file-switcher.openTypescript",
+        "key": "alt+t",
+        "mac": "cmd+t"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack --config ./build/node-extension.webpack.config.js",
+    "watch": "webpack --watch --config ./build/node-extension.webpack.config.js",
+    "package": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "npm run test-compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "npm run pretest && node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@angular-devkit/schematics": "^11.0.5",
+    "@schematics/angular": "^11.0.5",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.50.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "eslint": "^7.15.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2",
+    "vscode-test": "^1.4.1",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "ng-filename-parser": "^1.0.0"
+  }
+}

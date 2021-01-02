@@ -1,0 +1,82 @@
+// See https://go.microsoft.com/fwlink/?LinkId=733558
+// for the documentation about the tasks.json format
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "watch",
+			"problemMatcher": [],
+			"isBackground": true,
+			"presentation": {
+				"reveal": "never"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "npm",
+			"script": "test-watch",
+			"problemMatcher": "$tsc-watch",
+			"isBackground": true,
+			"presentation": {
+				"reveal": "never"
+			},
+			"group": "build"
+		},
+		{
+			"type": "npm",
+			"script": "compile",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: compile",
+			"detail": "webpack --config ./build/node-extension.webpack.config.js"
+		},
+		{
+			"type": "npm",
+			"script": "install",
+			"problemMatcher": [],
+			"label": "npm: install",
+			"detail": "install dependencies from package"
+		},
+		{
+			"type": "npm",
+			"script": "lint",
+			"problemMatcher": [],
+			"label": "npm: lint",
+			"detail": "eslint src --ext ts"
+		},
+		{
+			"type": "npm",
+			"script": "package",
+			"problemMatcher": [],
+			"label": "npm: package",
+			"detail": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js"
+		},
+		{
+			"type": "npm",
+			"script": "pretest",
+			"group": "clean",
+			"problemMatcher": [],
+			"label": "npm: pretest",
+			"detail": "npm run test-compile && npm run lint"
+		},
+		{
+			"type": "npm",
+			"script": "test-compile",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: test-compile",
+			"detail": "tsc -p ./"
+		},
+		{
+			"type": "npm",
+			"script": "vscode:prepublish",
+			"problemMatcher": [],
+			"label": "npm: vscode:prepublish",
+			"detail": "npm run package"
+		}
+	]
+}
