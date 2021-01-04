@@ -1,14 +1,18 @@
 import * as assert from "assert";
-import * as path from "path";
 import * as vscode from "vscode";
 import { openHTMLFile, openSpecFile, openStorybookFile, openStyleFile, openTypescriptFile, stylesConfigType } from "../../api";
 import { before } from 'mocha';
 
 suite("Extension Test Suite", async () => {
   vscode.window.showInformationMessage("Start all tests.");
-  const testWorkspace = path.resolve(__dirname, "../../../workspace/");
+  const ROOT_PATH_INDEX = 0;
+  let testWorkspace: string;
   
   before(async () => {
+    if (!vscode.workspace.workspaceFolders) {
+      return;
+    }
+    testWorkspace = vscode.workspace.workspaceFolders[ROOT_PATH_INDEX].uri.path;
     await vscode.commands.executeCommand('editor.foldAll');
   })
 
