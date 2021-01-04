@@ -8,7 +8,9 @@ async function main() {
     // Passed to `--extensionDevelopmentPath`
     const extensionDevelopmentPath = path.resolve(__dirname, "../../");
 
-		const testWorkspace = path.resolve(__dirname, "../../workspace/");
+		const testWorkspace = path.resolve(__dirname, "../../workspaces/workspace");
+    const testWorkspaceWithDefaultProject = path.resolve(__dirname, "../../workspaces/workspace-default-project/");
+
 		console.log('workspace should be', testWorkspace);
 
     // The path to test runner
@@ -21,6 +23,16 @@ async function main() {
       extensionTestsPath,
       launchArgs: [
         testWorkspace,
+        // This disables all extensions except the one being testing
+        "--disable-extensions",
+      ],
+    });
+
+    await runTests({
+      extensionDevelopmentPath,
+      extensionTestsPath,
+      launchArgs: [
+        testWorkspaceWithDefaultProject,
         // This disables all extensions except the one being testing
         "--disable-extensions",
       ],
