@@ -12,7 +12,7 @@ Switch between files based on angular style guide naming convention.
 
 ```
 src/                                    project source code
-|- app/                      
+|- app/
 |  |- user/                             user module
 |  |- components/                       dummy components
 |  |  |- menu/
@@ -21,33 +21,40 @@ src/                                    project source code
 |  |  |  |- menu.component.spec.ts
 |  |  |  |- menu.component.ts
 |  |  |  |- menu.stories.ts
+|  |- directives/
+|  |  - menu.directive.ts
+|  |  - menu.directive.spec.ts
+|  |- pipes/
+|  |  - menu.pipe.ts
+|  |  - menu.pipe.spec.ts
 |  |- pages/                            smart components
 |  |  |- dashboard/
-|  |  |  |- dashboard.component.html
-|  |  |  |- dashboard.component.scss
-|  |  |  |- dashboard.component.spec.ts
-|  |  |  |- dashboard.component.ts
-|  +- ...    
+|  |  |  |- dashboard.page.html
+|  |  |  |- dashboard.page.scss
+|  |  |  |- dashboard.page.spec.ts
+|  |  |  |- dashboard.page.stories.ts
+|  |  |  |- dashboard.page.ts
+|  +- ...
 ```
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `ng-file-switcher.openHTML`: open HTML file
-<kbd>ALT</kbd>+<kbd>B</kbd>
+- `ng-file-switcher.openHTML`: open HTML file
+  <kbd>ALT</kbd>+<kbd>B</kbd>
 
-* `ng-file-switcher.openStyle`: open Style file (based on angular.json config)
-<kbd>ALT</kbd>+<kbd>C</kbd>
+- `ng-file-switcher.openStyle`: open Style file (based on angular.json config)
+  <kbd>ALT</kbd>+<kbd>C</kbd>
 
-* `ng-file-switcher.openTest`: open Test file
-<kbd>ALT</kbd>+<kbd>D</kbd>
+- `ng-file-switcher.openTest`: open Test file
+  <kbd>ALT</kbd>+<kbd>D</kbd>
 
-* `ng-file-switcher.openStorybook`: open Storybook file
-<kbd>ALT</kbd>+<kbd>S</kbd>
+- `ng-file-switcher.openStorybook`: open Storybook file
+  <kbd>ALT</kbd>+<kbd>S</kbd>
 
-* `ng-file-switcher.openTypescript`: open Typescript file
-<kbd>ALT</kbd>+<kbd>T</kbd>
+- `ng-file-switcher.openTypescript`: open Typescript file
+  <kbd>ALT</kbd>+<kbd>T</kbd>
 
 ## Release Notes
 
