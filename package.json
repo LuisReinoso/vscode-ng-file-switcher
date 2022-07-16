@@ -102,6 +102,12 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "ng-filename-parser": "^1.0.0"
+    "ng-filename-parser": "^1.0.1"
+  },
+  "__metadata": {
+    "id": "68a4c6ac-dbe9-4347-8514-31d87bca0cfb",
+    "publisherDisplayName": "Luis Reinoso",
+    "publisherId": "67fca6a1-591c-46fa-8e4c-6c6286a2c2ca",
+    "isPreReleaseVersion": false
   }
 }
