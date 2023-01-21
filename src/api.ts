@@ -1,12 +1,12 @@
-import * as vscode from "vscode";
+import * as vscode from 'vscode';
 import {
   getHtmlFile,
   getSpecFile,
   getStorybookFile,
   getStyleFile,
   getTypescriptFile,
-} from "ng-filename-parser";
-import * as styleConfig from "./style-config";
+} from 'ng-filename-parser';
+import * as styleConfig from './style-config';
 
 // https://github.com/microsoft/vscode/wiki/Adopting-Multi-Root-Workspace-APIs#eliminating-rootpath
 const ROOT_PATH_INDEX = 0;
@@ -17,9 +17,15 @@ export async function openHTMLFile() {
   }
 
   const path = vscode.window.activeTextEditor.document.uri.fsPath;
-  const filename = getHtmlFile(path);
+  const filenames = getHtmlFile(path);
 
-  const document = await vscode.workspace.openTextDocument(filename);
+  let document;
+  try {
+    document = await vscode.workspace.openTextDocument(filenames[0]);
+  } catch (error) {
+    document = await vscode.workspace.openTextDocument(filenames[1]);
+  }
+
   await vscode.window.showTextDocument(document);
 }
 
@@ -29,9 +35,15 @@ export async function openStyleFile() {
   }
 
   const path = vscode.window.activeTextEditor.document.uri.fsPath;
-  const filename = getStyleFile(path, await stylesConfigType());
+  const filenames = getStyleFile(path, await stylesConfigType());
 
-  const document = await vscode.workspace.openTextDocument(filename);
+  let document;
+  try {
+    document = await vscode.workspace.openTextDocument(filenames[0]);
+  } catch (error) {
+    document = await vscode.workspace.openTextDocument(filenames[1]);
+  }
+
   await vscode.window.showTextDocument(document);
 }
 
@@ -41,9 +53,15 @@ export async function openSpecFile() {
   }
 
   const path = vscode.window.activeTextEditor.document.uri.fsPath;
-  const filename = getSpecFile(path);
+  const filenames = getSpecFile(path);
 
-  const document = await vscode.workspace.openTextDocument(filename);
+  let document;
+  try {
+    document = await vscode.workspace.openTextDocument(filenames[0]);
+  } catch (error) {
+    document = await vscode.workspace.openTextDocument(filenames[1]);
+  }
+
   await vscode.window.showTextDocument(document);
 }
 
@@ -53,9 +71,15 @@ export async function openStorybookFile() {
   }
 
   const path = vscode.window.activeTextEditor.document.uri.fsPath;
-  const filename = getStorybookFile(path);
+  const filenames = getStorybookFile(path);
 
-  const document = await vscode.workspace.openTextDocument(filename);
+  let document;
+  try {
+    document = await vscode.workspace.openTextDocument(filenames[0]);
+  } catch (error) {
+    document = await vscode.workspace.openTextDocument(filenames[1]);
+  }
+
   await vscode.window.showTextDocument(document);
 }
 
@@ -65,9 +89,15 @@ export async function openTypescriptFile() {
   }
 
   const path = vscode.window.activeTextEditor.document.uri.fsPath;
-  const filename = getTypescriptFile(path);
+  const filenames = getTypescriptFile(path);
 
-  const document = await vscode.workspace.openTextDocument(filename);
+  let document;
+  try {
+    document = await vscode.workspace.openTextDocument(filenames[0]);
+  } catch (error) {
+    document = await vscode.workspace.openTextDocument(filenames[1]);
+  }
+
   await vscode.window.showTextDocument(document);
 }
 
@@ -77,11 +107,10 @@ export async function readAngularJSONFile() {
   }
 
   const rootPath = vscode.workspace.workspaceFolders[ROOT_PATH_INDEX].uri.path;
-  const filename = rootPath + "/angular.json";
+  const filename = rootPath + '/angular.json';
   const document = await vscode.workspace.openTextDocument(filename);
   return JSON.parse(document.getText());
 }
-
 
 export async function stylesConfigType() {
   const angularJSON = await readAngularJSONFile();
